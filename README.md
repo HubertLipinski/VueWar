@@ -8,8 +8,7 @@ Simple game made with <br/>
         <li>Vue-router</li>
         <li>Buefy</li>
     </ul>
-    <li><a target="blank" href="https://deckofcardsapi.com/">Cards API</a></li>
-    [go]https://deckofcardsapi.com/){:target="_blank" rel="noopener"}
+    <li><a href="https://deckofcardsapi.com/">Cards API</a></li>
 </ul>
 
 #### Project setup
