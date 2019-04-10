@@ -1,18 +1,64 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <section class="hero is-white is-fullheight">
+            <div class="hero-head">
+                <navbar-component/>
+            </div>
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <h1 class="title">
+                        Wojna - karciana gra online
+                    </h1>
+                    <h2 class="subtitle">
+                        Subtitle
+                    </h2>
+                    <a class="button is-light is-inverted is-outlined is-large" @click="load">
+                        <span v-if="!gameState.gameStatus">Graj</span>
+                        <span v-else>Kontynuuj grę</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-foot">
+                <footer-component/>
+            </div>
+            <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="false"></b-loading>
+        </section>
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'home',
-  components: {
-    HelloWorld
-  }
+    data() {
+      return {
+          isLoading: false,
+      }
+    },
+    methods: {
+        ...mapActions(['gameStart']),
+        load(){
+            if(this.gameState.gameStatus) {
+                this.$router.push('game');
+                return;
+            }
+            this.isLoading = true;
+            setTimeout(()=>{
+                this.$store.dispatch('gameStart').then(()=>{
+                    this.isLoading = false;
+                    this.$router.push('game')
+                })
+            }, 400);
+        }
+    },
+    computed: mapGetters(['gameState']),
 }
+
 </script>
+
+<style scoped>
+    .hero.is-white {
+        background-image: linear-gradient(140deg, #e2ffeb -50%, whitesmoke 71%, #b1c0cb 100%)
+    }
+</style>
