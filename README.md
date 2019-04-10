@@ -9,6 +9,7 @@ Simple game made with <br/>
         <li>Buefy</li>
     </ul>
     <li><a target="blank" href="https://deckofcardsapi.com/">Cards API</a></li>
+    [go]https://deckofcardsapi.com/){:target="_blank" rel="noopener"}
 </ul>
 
 #### Project setup
