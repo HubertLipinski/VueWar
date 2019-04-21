@@ -2,7 +2,7 @@
 
 Simple game made with <br/>
 <ul>
-    Vue.js
+    <li>Vue.js</li>
     <ul>
         <li>Vuex</li>
         <li>Vue-router</li>
