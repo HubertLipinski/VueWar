@@ -1,7 +1,7 @@
 <template>
     <div class="content has-text-centered">
                <span>
-                   <a href="https://github.com" target="_blank">Source Code</a>
+                   <a href="https://github.com/HubertLipinski/VueWar" target="_blank">Source Code</a>
                </span>
         <p>
             <strong>Hubert Lipiński</strong>&copy; 2019

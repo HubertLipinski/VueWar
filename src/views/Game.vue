@@ -9,7 +9,7 @@
             </div>
             <div class="opponent">
                 <div class="opponent-card-pile">
-                    <b-tooltip type="is-light" position="is-bottom" :label="'Liczba kart: ' + playerHandLength(1).toString()">
+                    <b-tooltip type="is-light" position="is-right" :label="'Liczba kart: ' + playerHandLength(1).toString()">
                         <img :src="require('../assets/card-reverse.jpg')"  alt="" class="card-img">
                     </b-tooltip>
                 </div>
@@ -17,7 +17,7 @@
             <hr class="line"/>
             <div class="player">
                 <div class="player-card-pile">
-                    <b-tooltip type="is-light" :label="'Liczba kart: ' + playerHandLength(0).toString()">
+                    <b-tooltip type="is-light" position="is-left" :label="'Liczba kart: ' + playerHandLength(0).toString()">
                         <img :src="require('../assets/card-reverse.jpg')"  alt="" class="card-img" @click="makeMove">
                     </b-tooltip>
 
@@ -219,7 +219,6 @@
         bottom: 3rem;
         width: 100%;
         height: calc(50vh - 3.2rem);
-        /*background-color: blue;*/
     }
     .player-card-pile {
         cursor: pointer;
@@ -241,5 +240,42 @@
         right: 2rem;
         top: 4rem;
     }
+
+    @media only screen and (max-width: 600px) {
+
+        .responsive {
+            transform: scale(0.92);
+        }
+
+        .line {
+           display: none;
+        }
+        .card-container {
+            padding: 2px;
+            height: 174px;
+            width: calc(100% - 50px);
+            justify-content: center;
+        }
+
+        .card-img {
+            height:165px;
+            width:115px;
+            border-radius:10px;
+        }
+
+        .player-card-pile {
+            cursor: pointer;
+            position: fixed;
+            right: 7.5vw;
+            bottom: 3rem;
+        }
+        .opponent-card-pile {
+            cursor: pointer;
+            position: fixed;
+            left: 7.5vw;
+            top: 3.5rem;
+        }
+    }
+
 </style>
 
