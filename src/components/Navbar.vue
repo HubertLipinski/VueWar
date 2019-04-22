@@ -7,27 +7,24 @@
             <h1>Wojna - karciana gra online</h1>
           </router-link>
         </a>
-        <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+        <span class="navbar-burger burger" v-bind:class="{ 'is-active': isActive }" data-target="navbarMenuHeroA" @click="showNavbar">
           <span></span>
           <span></span>
           <span></span>
         </span>
       </div>
-      <div id="navbarMenuHeroA" class="navbar-menu">
+      <div id="navbarMenuHeroA" class="navbar-menu" v-bind:class="{ 'is-active': isActive }">
         <div class="navbar-end">
-          <a class="navbar-item">
-            <router-link to="/">
+          <router-link to="/" class="navbar-item">
+            <a>
               Strona główna
-            </router-link>
-          </a>
+            </a>
+          </router-link>
           <a class="navbar-item" @click="load">
-            Gra
-          </a>
-          <a class="navbar-item">
-            Documentation
+            Graj
           </a>
           <span class="navbar-item">
-            <a class="button is-light-ter is-inverted">
+            <a href="https://github.com/HubertLipinski/VueWar" target="_blank" class="button is-light-ter is-inverted">
                 <span class="icon">
                 <i class="fab fa-github"></i>
                 </span>
@@ -37,7 +34,6 @@
         </div>
       </div>
     </div>
-    <!--<b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="false"></b-loading>-->
   </nav>
 </template>
 
@@ -48,6 +44,7 @@
         data() {
             return {
                 isLoading: false,
+                isActive: false,
                 gameActive: false,
             }
         },
@@ -66,6 +63,9 @@
                         this.$router.push('game')
                     })
                 }, 400);
+            },
+            showNavbar() {
+                this.isActive === false ? this.isActive=true : this.isActive=false;
             }
         },
         created() {

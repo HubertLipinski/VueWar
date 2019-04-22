@@ -9,8 +9,13 @@
                     <h1 class="title">
                         Wojna - karciana gra online
                     </h1>
-                    <h2 class="subtitle">
-                        Subtitle
+                    <h2 class="subtitle" >
+                        <span v-if="!gameState.gameStatus">
+                            Zmierz się ze swoim wrogiem
+                        </span>
+                        <span v-else>
+                            Już uciekasz?
+                        </span>
                     </h2>
                     <a class="button is-light is-inverted is-outlined is-large" @click="load">
                         <span v-if="!gameState.gameStatus">Graj</span>
