@@ -13,5 +13,8 @@ Simple game made with <br/>
 
 #### Project setup
 ```
+git clone https://github.com/HubertLipinski/VueWar.git
+cd VueWar
 npm install
+npm run serve
 ```
