@@ -23,11 +23,10 @@
 
                 </div>
             </div>
-
             <div class="card-container is-overlay">
                 <div v-if="cardPile">
-                    <img :src="cardPile[1].card.image" class="card-img">
-                    <img :src="cardPile[0].card.image" class="card-img">
+                    <img :src="cardPile[1].card.image" class="card-img" alt="game-card">
+                    <img :src="cardPile[0].card.image" class="card-img" alt="game-card">
                 </div>
                 <!--<img :src="card.card.image" v-for="(card, index) in cardPile" :key="index" class="card-img">-->
                 <img v-if="isWar" :src="require('../assets/card-reverse.jpg')"  alt="" class="card-img" style="position: relative; left: -7px; top: 0; transform: scale(0.97)">
@@ -38,17 +37,6 @@
             <footer-component/>
         </div>
         <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="false"></b-loading>
-
-        <!--<div v-if="dev">-->
-            <!--<p>is game active: {{gameState.gameStatus}}</p>-->
-            <!--<p>is game finished: {{gameState.finished}}</p>-->
-            <!--<p>Game Turn: {{gameState.turn}}</p>-->
-            <!--<p>Game Round: {{gameState.round}}</p>-->
-            <!--<p>Player hand 1: {{$store.getters.playerHandLength(0)}}</p>-->
-            <!--<p>Player hand 2: {{$store.getters.playerHandLength(1)}}</p>-->
-            <!--<p>Pile: {{pile}}</p>-->
-        <!--</div>-->
-
     </section>
 </template>
 
@@ -60,8 +48,6 @@
         name: 'game',
         data() {
           return {
-              dev: false,
-
               timeout: 1000,
               verdictTime: 500,
               isLoading: true,
@@ -85,12 +71,12 @@
                             this.isLoading = true;
                             this.$store.dispatch('gameStart').then(()=>{
                                 this.cardPile = null;
-                                setTimeout(()=>{this.isLoading = false}, 500);
+                                setTimeout(() => {this.isLoading = false}, 500);
                             })
 
                         }});
                 }
-                else if(this.userCanMove) {
+                else if (this.userCanMove) {
                     //round has started
                     this.incrementRound();
                     this.throwCard(1);
@@ -120,7 +106,7 @@
                 let card1 = parseInt(this.cardPile[0].card.value);
                 let card2 = parseInt(this.cardPile[1].card.value);
 
-                if(card1 === card2) {
+                if (card1 === card2) {
                     Toast.open({
                         duration: (this.timeout * 1.75),
                         message: `-- Wojna --`,
@@ -149,8 +135,8 @@
                 setTimeout(()=>this.userCanMove = true, 1000);
             },
             checkState() {
-                if(this.$store.getters.playerHandLength(0) == 0) this.setGameOver("przegrałeś...");
-                else if (this.$store.getters.playerHandLength(1) == 0)  this.setGameOver("wygrałeś!");
+                if (this.$store.getters.playerHandLength(0) === 0) this.setGameOver("przegrałeś...");
+                else if (this.$store.getters.playerHandLength(1) === 0)  this.setGameOver("wygrałeś!");
             }
         },
         computed: mapGetters([
@@ -162,10 +148,10 @@
             'pile',
         ]),
         created() {
-            if(this.gameState.gameStatus !== true) {
+            if (this.gameState.gameStatus !== true) {
                 this.$router.push('/');
             }
-            setTimeout(()=>{this.isLoading = false}, 500);
+            setTimeout(() => {this.isLoading = false}, 500);
         }
     }
 </script>
@@ -211,7 +197,6 @@
         top: 3rem;
         width: 100%;
         height: calc(50vh - 3rem);
-        /*background-color: red;*/
     }
     .player {
         position: fixed;

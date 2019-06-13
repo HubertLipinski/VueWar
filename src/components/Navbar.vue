@@ -61,8 +61,8 @@
                     return;
                 }
                 this.isLoading = true;
-                setTimeout(()=>{
-                    this.$store.dispatch('gameStart').then(()=>{
+                setTimeout(() => {
+                    this.$store.dispatch('gameStart').then(() => {
                         this.isLoading = false;
                         this.$router.push('game')
                     })
@@ -81,10 +81,7 @@
           },
         },
         created() {
-            if(this.gameState.gameStatus)
-                this.gameActive = true;
-            else
-                this.gameActive = false;
+            this.gameActive = !!this.gameState.gameStatus;
         }
     }
 </script>
