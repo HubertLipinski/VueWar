@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const state = {
     game: false,
     round: 0,
@@ -10,24 +9,27 @@ const state = {
 
     players: [
         {
-            name: null,
-            score: null,
+            name: "player",
+            score: 0,
             hand: [],
-            money: 100
         },
         {
             name: "AI",
-            score: null,
+            score: 0,
             hand: [],
-            money: 100
         },
     ],
+
     deck: {
         deck_id: null,
         shuffled: null,
         remaining: null,
     },
-    pile: [{card:null},{card: null}],
+
+    pile: [
+            {card:null},
+            {card: null}
+        ],
 };
 
 const getters = {
@@ -49,13 +51,12 @@ const getters = {
 };
 
 const actions = {
-
      async fetchDeck({ commit }) {
          const response = await axios.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1');
          commit('setDeck', response.data);
      },
     async fetchHand({ commit, state, dispatch }, userId) {
-         const response = await axios.get('https://deckofcardsapi.com/api/deck/'+state.deck.deck_id+'/draw/?count=26');
+         const response = await axios.get('https://deckofcardsapi.com/api/deck/' + state.deck.deck_id + '/draw/?count=26');
          commit('setHand', {
              'playerID': userId,
              'cards': response.data.cards
@@ -95,6 +96,7 @@ const actions = {
     takeCards({ commit }, userId) {
          commit('collectCards', userId);
     },
+
     setGameOver({ commit }, winner) {
          commit('gameOver', winner);
     }
@@ -123,7 +125,7 @@ const mutations = {
     },
     setHand: (state, payload) => {
         let userId = parseInt(payload.playerID);
-        payload.cards.forEach((card)=>{
+        payload.cards.forEach((card) => {
             state.players[userId].hand.push({
                 'image': card.image,
                 'value': card.value,
@@ -142,8 +144,6 @@ const mutations = {
         });
     },
     updateCardsAmount: (state, amount) => (state.deck.remaining = amount),
-
-
 };
 
 export default {
