@@ -28,7 +28,6 @@
                     <img :src="cardPile[1].card.image" class="card-img" alt="game-card">
                     <img :src="cardPile[0].card.image" class="card-img" alt="game-card">
                 </div>
-                <!--<img :src="card.card.image" v-for="(card, index) in cardPile" :key="index" class="card-img">-->
                 <img v-if="isWar" :src="require('../assets/card-reverse.jpg')"  alt="" class="card-img" style="position: relative; left: -7px; top: 0; transform: scale(0.97)">
                 <img v-if="isWar" :src="require('../assets/card-reverse.jpg')"  alt="" class="card-img" style="position: relative; right: 10px; top: 0; transform: scale(0.97)">
             </div>
