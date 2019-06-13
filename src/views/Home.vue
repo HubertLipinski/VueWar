@@ -26,7 +26,11 @@
             <div class="hero-foot">
                 <footer-component/>
             </div>
-            <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="false"></b-loading>
+            <b-loading
+                    :is-full-page="true"
+                    :active.sync="isLoading"
+                    :can-cancel="false"
+            />
         </section>
     </div>
 </template>
@@ -44,12 +48,12 @@ export default {
     methods: {
         ...mapActions(['gameStart']),
         load(){
-            if(this.gameState.gameStatus) {
+            if (this.gameState.gameStatus) {
                 this.$router.push('game');
                 return;
             }
             this.isLoading = true;
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.$store.dispatch('gameStart').then(()=>{
                     this.isLoading = false;
                     this.$router.push('game')

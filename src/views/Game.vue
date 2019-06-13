@@ -35,7 +35,11 @@
         <div class="hero-foot">
             <footer-component/>
         </div>
-        <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="false"></b-loading>
+        <b-loading
+                :is-full-page="true"
+                :active.sync="isLoading"
+                :can-cancel="false"
+        />
     </section>
 </template>
 

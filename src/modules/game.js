@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const state = {
     game: false,
     round: 0,
