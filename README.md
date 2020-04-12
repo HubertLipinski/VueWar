@@ -1,5 +1,7 @@
 # VueWar
 
+#### Live demo: https://vue-war.now.sh/
+
 Simple game made with <br/>
 <ul>
     <li>Vue.js</li>
